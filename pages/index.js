@@ -6,8 +6,8 @@ import { getlast9Days } from "../pages/api/ninePhotos";
 import Loading from "../components/loading/loading";
 
 export default function Home() {
-  const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
     async function getData() {

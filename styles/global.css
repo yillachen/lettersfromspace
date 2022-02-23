@@ -5,6 +5,7 @@ body {
   font-family: "Dark Paradise", Georgia, serif;
   line-height: 1.6;
   font-size: 18px;
+  letter-spacing: 0.25px;
 }
 
 * {
@@ -12,12 +13,26 @@ body {
 }
 
 a {
-  color: #0070f3;
+  color: #3a0ca3;
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
+a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #3a0ca3;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 img {
