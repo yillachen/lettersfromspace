@@ -13,7 +13,7 @@ export const getlast9Days = async () => {
     const { data } = await axios.get(
       APOD_URL + "&start_date=" + `${last9Days}`
     );
-    return data;
+    return data.reverse();
   } catch (error) {
     throw new Error(error);
   }

@@ -1,8 +1,9 @@
 import { Link, animateScroll as scroll } from "react-scroll";
 import Head from "next/head";
 import styles from "./layout.module.css";
-import utilStyles from "../styles/utils.module.css";
-import { BackToTop } from "../styles/styles";
+import { BackToTop, BackToBottom } from "../styles/styles";
+
+// create a navbar up top that has the title and options for likes, and login components via firebase to hold onto the data. scrollToTop with the title. scrollToBottom for credits.
 
 const name = "Letters from Space";
 export const siteTitle = "Letters from Space";
@@ -20,35 +21,11 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <BackToTop>
-        <Link
-          activeClass="active"
-          to="top"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-        >
-          &uarr; <br/> Back to Top
-        </Link>
-      </BackToTop>
-
       <header className={styles.header}>
-        {home ? (
-          <h1 id="top" className={utilStyles.heading2Xl}>
-            {name}
-          </h1>
-        ) : (
-          <>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+        {home ? <h1>{name}</h1> : <h1>{name}</h1>}
       </header>
-      <main>{children}</main>
+
+      {children}
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
@@ -56,6 +33,31 @@ export default function Layout({ children, home }) {
           </Link>
         </div>
       )}
+
+      <BackToTop>
+        <Link
+          onClick={scroll.scrollToTop}
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+          to=""
+        >
+          &uarr; <br /> Go to Top
+        </Link>
+      </BackToTop>
+      <BackToBottom>
+        <Link
+          onClick={scroll.scrollToBottom}
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+          to=""
+        >
+          Go to End <br /> &darr;
+        </Link>
+      </BackToBottom>
     </div>
   );
 }

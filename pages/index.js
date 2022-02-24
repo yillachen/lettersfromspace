@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     async function getData() {
       let response = await getlast9Days();
-      response = response.filter((pic) => pic.media_type === "image");
+      // response = response.filter((pic) => pic.media_type === "image");
       setPhotos(response);
     }
     getData();
